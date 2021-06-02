@@ -12,8 +12,8 @@ export class GitHubApiClient {
         private readonly apiClient: AxiosInstance) {
     }
 
-    async getDiff(repoOwner: string, repoName: string, base: string, head: string): Promise<GitHubCompareResponse> {
-        const requestUrl = `${GitHubApiClient.GIT_HUB_BASE_PATH}/repos/${repoOwner}/${repoName}/compare/${base}...${head}`;
+    async getDiff(repoName: string, base: string, head: string): Promise<GitHubCompareResponse> {
+        const requestUrl = `${GitHubApiClient.GIT_HUB_BASE_PATH}/repos/${repoName}/compare/${base}...${head}`;
 
         const response = await this.apiClient.get(requestUrl);
 
