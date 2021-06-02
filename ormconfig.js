@@ -5,7 +5,7 @@ module.exports = [
     database: "database.sqlite",
     synchronize: true,
     logging: true,
-    entities: ["src/entity/**/*.ts"],
+    entities: ["src/entities/**/*.ts"],
     migrations: ["src/migration/**/*.ts"],
     subscribers: ["src/subscriber/**/*.ts"],
     cli: {
@@ -20,7 +20,7 @@ module.exports = [
     url: process.env.DATABASE_URL,
     synchronize: true, // switch this to false once you have the initial tables created and use migrations instead
     logging: false,
-    entities: ["dist/entity/**/*.js"],
+    entities: ["dist/entities/**/*.js"],
     migrations: ["dist/migration/**/*.js"],
     subscribers: ["dist/subscriber/**/*.js"],
     cli: {

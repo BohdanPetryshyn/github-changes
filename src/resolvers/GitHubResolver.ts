@@ -1,11 +1,21 @@
-import {Arg, Query, Resolver} from "type-graphql";
+import {Arg, Mutation, Query, Resolver} from "type-graphql";
 import {GitHubDiffService} from "../services/GitHubDiffService";
 import {Service} from "typedi";
+import {RepoTrackedFolder} from "../entities/RepoTrackedFolder";
 
 @Resolver()
 @Service()
 export class GitHubResolver {
   constructor(private readonly diffService: GitHubDiffService) {}
+
+  @Mutation(() => Boolean)
+  async setTrackedFolder(
+      @Arg('repoName') repoName: string,
+      @Arg('trackedFolder') trackedFolder: string
+  ) {
+    await RepoTrackedFolder.create({ repoName, trackedFolder}).save();
+    return true;
+  }
 
   @Query(() => [String])
   changedFileNames(
