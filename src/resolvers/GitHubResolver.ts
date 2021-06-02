@@ -25,4 +25,13 @@ export class GitHubResolver {
   ) {
     return this.diffService.getChangedFileNames(repoName, base, head);
   }
+
+  @Query(() => [String])
+  changedTrackedFileNames(
+      @Arg('repoName') repoName: string,
+      @Arg('base') base: string,
+      @Arg('head') head: string
+  ) {
+    return this.diffService.getChangedTrackedFileNames(repoName, base, head);
+  }
 }
