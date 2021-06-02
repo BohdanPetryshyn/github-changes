@@ -21,7 +21,7 @@ module.exports = [
     port: 5432,
     username: "test",
     password: "test",
-    database: "test",
+    database: "github-changes",
     synchronize: true,
     logging: true,
     entities: ["src/entities/**/*.ts"],
