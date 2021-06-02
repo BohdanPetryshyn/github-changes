@@ -1,5 +1,7 @@
 import {GitHubApiClient} from "./GitHubApiClient";
+import {Service} from "typedi";
 
+@Service()
 export class GitHubDiffService {
     constructor(private readonly gitHubClient: GitHubApiClient) {
     }

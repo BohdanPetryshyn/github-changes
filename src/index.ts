@@ -3,9 +3,13 @@ import { createConnection, getConnectionOptions } from "typeorm";
 import express from "express";
 import { ApolloServer } from "apollo-server-express";
 import { buildSchema } from "type-graphql";
-import { HelloWorldResolver } from "./resolvers/HelloWorldResolver";
+import { Container } from "typedi";
+import { GitHubResolver } from "./resolvers/GitHubResolver";
+import {initDiContext} from "./context";
+
 
 (async () => {
+  initDiContext();
   const app = express();
 
   const options = await getConnectionOptions(
@@ -15,8 +19,9 @@ import { HelloWorldResolver } from "./resolvers/HelloWorldResolver";
 
   const apolloServer = new ApolloServer({
     schema: await buildSchema({
-      resolvers: [HelloWorldResolver],
-      validate: true
+      resolvers: [GitHubResolver],
+      validate: true,
+      container: Container
     }),
     context: ({ req, res }) => ({ req, res })
   });
