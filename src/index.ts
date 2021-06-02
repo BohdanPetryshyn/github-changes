@@ -13,7 +13,7 @@ import {initDiContext} from "./context";
   const app = express();
 
   const options = await getConnectionOptions(
-    process.env.NODE_ENV || "development"
+    "postgres"
   );
   await createConnection({ ...options, name: "default" });
 
